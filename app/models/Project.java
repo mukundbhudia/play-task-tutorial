@@ -1,6 +1,8 @@
 package models;
 
 import play.db.ebean.Model;
+
+import javax.annotation.PropertyKey;
 import javax.persistence.*;
 import java.util.*;
 
@@ -24,6 +26,13 @@ public class Project extends Model {
     }
 
     public static Model.Finder<Long, Project> find = new Model.Finder(Long.class, Project.class);
+
+    public static Project create(String name, String folder, String owner){
+        Project project = new Project(name, folder, User.find.ref(owner));
+        project.save();
+        project.saveManyToManyAssociations("members");
+        return project;
+    }
 
     public static List<Project> findInvolving(String user){
         return find.where().eq("members.email", user).findList();
