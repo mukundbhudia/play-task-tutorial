@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import play.api.test.WithApplication;
 
+import java.util.*;
+
 import static junit.framework.Assert.*;
 import static play.test.Helpers.*;
 
@@ -32,5 +34,19 @@ public class ModelsTest {
         assertNotNull(User.authenticate("bob@gmail.com", "secret"));
         assertNull(User.authenticate("bob@gmail.com", "badpassword"));
         assertNull(User.authenticate("tom@gmail.com", "secret"));
+    }
+
+    @Test
+    public void findProjectsInvolving(){
+        new User("bob@gmail.com", "Bob", "secret").save();
+        new User("jane@gmail.com", "Jane", "secret").save();
+
+        Project.create("Play 2", "play", "bob@gmail.com");
+        Project.create("Play 1", "play", "jane@gmail.com");
+
+        List<Project> results = Project.findInvolving("bob@gmail.com");
+        assertEquals(1, results.size());
+        assertEquals("Play 2", results.get(0).name);
+
     }
 }
