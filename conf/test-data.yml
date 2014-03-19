@@ -1,3 +1,6 @@
+
+# Users
+
 - &bob !!models.User
     email:      bob@example.com
     name:       Bob
@@ -12,6 +15,8 @@
     email:      jeff@example.com
     name:       Jeff
     password:   secret
+
+# Projects
 
 - &play2 !!models.Project
     name:       Play 2.0
@@ -59,6 +64,8 @@
     members:
         - *jeff
 
+# Task
+
 - !!models.Task
     title:      Fix the documentation
     done:       false
@@ -95,3 +102,4 @@
     dueDate:    2011-11-15
     project:    *privatejeff
     assignedTo: *jeff
+
