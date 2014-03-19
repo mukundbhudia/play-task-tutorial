@@ -83,7 +83,7 @@ public class ModelsTest {
 
         //Authenticate as a user
         assertNotNull(User.authenticate("bob@example.com", "secret"));
-        assertNotNull(User.authenticate("jane@exmaple.com", "secret"));
+        assertNotNull(User.authenticate("jane@example.com", "secret"));
         assertNull(User.authenticate("jeff@example.com", "badpassword"));
         assertNull(User.authenticate("tom@example.com", "secret"));
 
