@@ -74,7 +74,8 @@ public class ModelsTest {
 
     @Test
     public void fullTest(){
-        Ebean.save((List) Yaml.load("test-data.yml"));
+        //TODO figure out why global data overrides data in this test
+        //Ebean.save((List) Yaml.load("test-data.yml"));
 
         //Count number of items
         assertEquals(3, User.find.findRowCount());
