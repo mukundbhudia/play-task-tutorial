@@ -7,6 +7,7 @@ import javax.persistence.*;
  * @Author: Mukund Bhudia
  */
 @Entity
+@Table(name = "users") //Specifically naming user table as Users to prevent reserved word clash for Heroku prod database
 public class User extends Model {
 
     @Id
