@@ -42,8 +42,9 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result index() {
         return ok(index.render(
-                Project.find.all(),
-                Task.find.all()
+                Project.findInvolving(request().username()),
+                Task.findTodoInvolving(request().username()),
+                User.find.byId(request().username())
         ));
     }
 
