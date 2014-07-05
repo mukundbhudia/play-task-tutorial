@@ -33,6 +33,7 @@ public class ApplicationTest {
         int a = 1 + 1;
         assertThat(a).isEqualTo(2);
     }
+/*
 
     @Ignore("Will complete later")
     @Test
@@ -41,6 +42,7 @@ public class ApplicationTest {
         assertThat(contentType(html)).isEqualTo("text/html");
         assertThat(contentAsString(html)).contains("Your new application is ready.");
     }
+*/
 
 
 }
